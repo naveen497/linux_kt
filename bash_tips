@@ -1,0 +1,3 @@
+1. command to modify a previous command => !!:gs/string1/string2 where string1 is replaced by string2
+2. command to create alias => alias ll="ls -ls -t"
+3. always use ~/.bash_profile 
