@@ -1,0 +1,1 @@
+In short, at its heart, Spring Boot is just Spring. Inside, Spring Boot is doing the same kind of bean configuration in Spring that you might do on your own if Spring Boot didn’t exist. Thankfully, because Spring Boot does exist, you’re freed from dealing with explicit boilerplate configuration and are able to focus on the logic that makes your application unique
