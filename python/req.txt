@@ -1,0 +1,11 @@
+Input : csv file containing entries of when the order was created and released
+Output : the time duration it took for 99% of the orders created to be released
+Implementation technique : Normalization 
+---------------------
+   id    |  time    |
+_____________________
+    1    |  12      |
+    2    |  23      |
+    3    |  18      |
+Description of technique : The minimum and the maximum time durations taken for the orders to be released are considered in this approach. A configurable bin size decides how accurate the result is going to be. 
+Formula used : ( element - min )/( bin size ) . This result is placed in one of the 'n' bins between min and max values. This formula is applied for all the elements in the time column and 

@@ -1,0 +1,14 @@
+# -*- coding: utf-8 -*-
+import numpy as np
+import pandas as pd
+from pandas import Series, DataFrame
+import scipy
+import csv
+df1 = pd.read_csv('Workbook1.csv')
+print df1
+#df = data.iloc[:,1]
+#table = ff.create_table(df)
+#py.iplot(table, filename='sample_data')
+#data_norm_by_std = [number/scipy.std(df) for number in df]
+#print "normalized data: "+str(data_norm_by_std)
+#print "std_dev: "+str(scipy.std(df))
