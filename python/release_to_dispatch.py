@@ -73,7 +73,7 @@ for t in range(len(groups)):
 	# epoch = int(time.mktime(time.strptime(d,p)))
 	# print epoch
 	for i in range(len(li_act)):
-		d = str(li_act[i])
+		d = str(li_act[i])x
 		epoch = int(time.mktime(time.strptime(d,p)))
 		li_act_ep.append(epoch)
 

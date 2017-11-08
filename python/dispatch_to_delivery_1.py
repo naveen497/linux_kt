@@ -8,17 +8,17 @@ import matplotlib.pyplot as plt
 from pandas import Series
 import scipy
 import csv
-from helper_1 import norm
+from helper_2 import norm
 import time, os
 # from email.utils import parsedate_tz, formatdate
 
 
-time_fac = 60
+# time_fac = 60
 bin_size = 1
 perc_list = [0.99,0.98,0.97,0.96,0.95,0.90,0.85]
 
 # perc_list = [0.99]
-df = pd.read_csv('~/Downloads/DeliveryData.csv')
+df = pd.read_csv('~/Downloads/DeliveryData_2.csv')
 sample_size = df.shape[0]
 # print "sample_size: "+ str( sample_size)
 group_csc = df.groupby('CARRIER_SERVICE_CODE')
@@ -30,6 +30,7 @@ for i in range(len(groups)):
 	temp_group = group_csc.get_group(groups[i])
 	temp_order_cnt = temp_group.shape[0]
 	count_group.append(temp_order_cnt)
+print "count: "+str(count_group)
 count_group = sorted(count_group)
 
 target_group_index =[]
@@ -68,7 +69,7 @@ for t in range(len(groups)):
 	li_stmp_ep = []
 	# li = str(li)
 	# d= li
-	p='%Y%m%d%H%M%S'
+	p='%d/%m/%y %H:%M'
 	print "string of li_act: "+ str( str(li_act[0]))
 
 	# epoch = int(time.mktime(time.strptime(d,p)))

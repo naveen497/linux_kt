@@ -57,37 +57,26 @@ def norm(input_file,size,percentile,csc_code):
 	print " corresponding time " + str( corr_time)
 	bins = np.arange(mini, maxi, bin_size) # fixed bin size
 	# print "bins: "+ str( bins )
-	print "figure"
-	plt.xlim([mini-5, maxi+5])
+	# print "figure"
+	# plt.xlim([mini-5, maxi+5])
 
-	plt.hist(saved_column, bins=bins, alpha=0.7)
-	plt.title('SLA between Dispatch and Delivery of csc = %s'%csc_code)
-	plt.xlabel('time ( min )--->(bin size = %d) \n Mean = %.2f,   Median = %.2f, Mode = %d'%(bin_size,mean,median,mode_list[0]))
-	plt.ylabel('count')
-	plt.show()
+	# plt.hist(saved_column, bins=bins, alpha=0.7)
+	# plt.title('SLA between Dispatch and Delivery of csc = %s'%csc_code)
+	# plt.xlabel('time ( min )--->(bin size = %d) \n Mean = %.2f,   Median = %.2f, Mode = %d'%(bin_size,mean,median,mode_list[0]))
+	# plt.ylabel('count')
+	# plt.show()
 
 
 
 	temp=0
-	result=[0,0]
+	result=0
 	p_cent = percentile
 
 	print "percentile : " + str(p_cent*global_count)
-	print "1 - percentile : " + str((1-p_cent)*global_count)
 	for t in range(len(count)):
 		if ( temp >= int(p_cent*global_count )):
-			result[0] = t
+			result = t
 			break
 		temp+=count[t]
-	result[0] = mini + result[0]*bin_size 
-	
-	temp=0
-	
-
-	for t in range(len(count))[::-1]:
-		if ( temp >= int((1-p_cent)*global_count )):
-			result[1] = t
-			break
-		temp+=count[t]
-	result[1] = mini + result[1]*bin_size 
+	result = mini + result*bin_size 
 	return result

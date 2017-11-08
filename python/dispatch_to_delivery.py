@@ -14,11 +14,11 @@ import time, os
 
 
 # time_fac = 60
-bin_size = 120
+bin_size = 1
 perc_list = [0.99,0.98,0.97,0.96,0.95,0.90,0.85]
 
 # perc_list = [0.99]
-df = pd.read_csv('~/Downloads/DeliveryData_1.csv')
+df = pd.read_csv('~/Downloads/DeliveryData_2.csv')
 sample_size = df.shape[0]
 print "sample_size: "+ str( sample_size)
 group_csc = df.groupby('CARRIER_SERVICE_CODE')
@@ -37,9 +37,7 @@ target_group_index =[]
 target_group_index.append(groups_list.index( 'Store_Collect-UKMainland' )) 
 target_group_index.append(groups_list.index( 'TESCO_Standard-UKMainland' )) 
 target_group_index.append(groups_list.index( 'TESCO_Express-UKMainland' )) 
-target_group_index.append(groups_list.index(  'Store_Collect_UKMainland'  )) 
 target_group_index.append(groups_list.index( 'Store_Collect-UKOOA' ))
-target_group_index.append(groups_list.index( 'Standard_Small-UKMainland' ))
 
 
 # print "target_group: "+ str(target_group_index)
@@ -89,7 +87,7 @@ for t in range(len(groups)):
 	li_stmp_ep = []
 	# li = str(li)
 	# d= li
-	p='%Y%m%d%H%M%S'
+	p='%d/%m/%y %H:%M'
 	# print "string of li_act: "+ str( str(li_act[0]))
 	# print 'li_act: '+ str(li_act[0])
 	# epoch = int(time.mktime(time.strptime(d,p)))
@@ -123,11 +121,11 @@ for t in range(len(groups)):
 	for perc in range(len(perc_list)):
 		# print " ------------------ " + str(perc_list[perc]*100) +" % ---------------------"
 		# print " ------ actual shipment details --------- "
-		result_act  = norm(li_act_ep,bin_size,perc_list[perc],groups[t])
-		result_act  = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(result_act))
+		# result_act  = norm(li_act_ep,bin_size,perc_list[perc],groups[t])
+		# result_act  = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(result_act))
 		# print " ------ stamped shipment details --------- "
-		result_stmp = norm(li_stmp_ep,bin_size,perc)
-		result_stmp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(result_stmp))
+		# result_stmp = norm(li_stmp_ep,bin_size,perc)
+		# result_stmp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(result_stmp))
 		# print "actual shipment date | stamped shipment date"
 		# print result_act + "     "+ result_stmp
 		# print "99% of actual shipment date : " + str( final_result_act ) 
