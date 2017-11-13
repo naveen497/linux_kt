@@ -38,3 +38,12 @@ git checkout master
 
 git rebase upstream/master
 
+*********************************************************************************************************************
+************************************* git tips after while watching the tutorial ************************************
+$ git init ----> to initiate a git repo locally 
+$ git add xyz.txt ----> to stage the file xyz.txt
+$ git commit -m "modified xyz.txt" -----> to commit the staged changes 
+$ vi .gitignore  ----> include all the extensions of the files which you want to ignore during staging
+$ git checkout <branch> && git rebase <targetBranch> -----> to update <branch> with the changes/modifications in <targeBranch>
+$ git checkout -- <file> ----> to discard the changes made to <file> before staging it 
+$ 
