@@ -1,0 +1,13 @@
+In order to install Cassandra and cqlsh we will need to run:
+$brew install cassandra
+$brew install python
+$pip install cql
+
+In order to check the installation used
+$brew info cassandra
+
+In order to launch the Cassandra server use:
+$launchctl load /usr/local/opt/cassandra/homebrew.mxcl.cassandra.plist
+
+In order to verify that Cassandra is running use:
+$cqlsh

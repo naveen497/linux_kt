@@ -17,7 +17,7 @@ import csv
 time_fac = 60
 bin_size = 1
 perc_list = [0.99,0.98,0.97,0.96,0.95,0.90,0.85]
-df = pd.read_csv('~/Downloads/ShipmentData.csv')
+df = pd.read_csv('~/Downloads/ShipmentDataLatest.csv')
 
 group_csc = df.groupby('CARRIER_SERVICE_CODE')
 groups = group_csc.groups.keys()
@@ -30,11 +30,11 @@ print groups
 # f.write('\n') #Give your csv text here.
 ## Python will convert \n to os.linesep
 # f.close()
-data = "CSC",
-with open('r_to_d.csv', "wb") as csv_file:
-        writer = csv.writer(csv_file, delimiter=',')
-        for line in data:
-            writer.writerow(line)
+# data = "CSC",
+# with open('r_to_d.csv', "wb") as csv_file:
+#         writer = csv.writer(csv_file, delimiter=',')
+#         for line in data:
+#             writer.writerow(line)
 
 for t in range(len(groups)):
 	print " ========================================================="

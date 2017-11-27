@@ -18,12 +18,12 @@ bin_size = 1
 perc_list = [0.99,0.98,0.97,0.96,0.95,0.90,0.85]
 
 # perc_list = [0.99]
-df = pd.read_csv('~/Downloads/DeliveryData_2.csv')
+df = pd.read_csv('~/Downloads/DeliveryDataLatest.csv')
 sample_size = df.shape[0]
 # print "sample_size: "+ str( sample_size)
 group_csc = df.groupby('CARRIER_SERVICE_CODE')
 groups = group_csc.groups.keys()
-print groups
+print "groups:"+str(groups)
 groups_list = list(groups)
 count_group = []
 for i in range(len(groups)):
@@ -34,16 +34,16 @@ print "count: "+str(count_group)
 count_group = sorted(count_group)
 
 target_group_index =[]
-target_group_index.append(groups_list.index('Store_Collect-UKMainland')) 
-# target_group_index.append(groups_list.index('Store_Collect-UKOOA'))
-# target_group_index.append(groups_list.index('Standard2C-UKMainland'))
-
+target_group_index.append(groups_list.index('TESCO_Standard-UKMainland')) 
+target_group_index.append(groups_list.index('TESCO_Express-UKMainland'))
+target_group_index.append(groups_list.index('TESCO_Standard-UKOOA'))
 
 # print "target_group: "+ str(target_group_index)
 # test = group_csc.get_group(groups[4])
 # print test
 # t=4
 # print groups
+#******
 order_cnt_group =[]
 for t in range(len(groups)):
 	if ( t not in target_group_index ):
@@ -69,8 +69,8 @@ for t in range(len(groups)):
 	li_stmp_ep = []
 	# li = str(li)
 	# d= li
-	p='%d/%m/%y %H:%M'
-	print "string of li_act: "+ str( str(li_act[0]))
+	p='%Y-%m-%d %H:%M:%S'
+	# print "string of li_act: "+ str( str(li_act[0]))
 
 	# epoch = int(time.mktime(time.strptime(d,p)))
 	# print epoch
@@ -78,6 +78,12 @@ for t in range(len(groups)):
 		d = str(li_act[i])
 		epoch = int(time.mktime(time.strptime(d,p)))
 		li_act_ep.append(epoch)
+	least_date = min(li_act_ep)
+	least_date = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(least_date))
+	print "least_date: "+ str(least_date)
+	latest_date = max(li_act_ep)
+	latest_date = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(latest_date))
+	print "latest_date: "+ str(latest_date)
 
 	for i in range(len(li_stmp)):
 		d = str(li_stmp[i])
@@ -87,7 +93,7 @@ for t in range(len(groups)):
 	diff_disp = []
 	for i in range(len(li_act_ep)):
 		diff_temp = li_stmp_ep[i] - li_act_ep[i] 
-		diff_disp.append(-diff_temp/60)
+		diff_disp.append(-diff_temp/3600)
 	# print "diff_disp: " + str(diff_disp)
 
 
@@ -107,7 +113,8 @@ for t in range(len(groups)):
 		# print "99% of stamped shipment date : " + str( final_result_stmp)
 		# print " "time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(final_result))
 		result_act  = norm(diff_disp,bin_size,perc_list[perc],groups[t])
-		print str(perc_list[perc])+"% : " + str( -result_act ) 
+#
+		print str(perc_list[perc])+"% : " + str(result_act ) 
 		# result_act  = time.strftime('%Y-%m-%d %H:%M:%S'
 # print "order count group wise: " + str(order_cnt_group)
 
