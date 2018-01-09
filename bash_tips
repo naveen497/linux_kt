@@ -33,3 +33,6 @@ PS1="\[$reset\][\[$cyan\]\A\[$reset\]]\[$user_color\]\u@\h(\l)\
 # deleting all except for few files in a directory
 
 find . -type f -not -name 'script_10min_csv_aws.jmx' -print0 | xargs -0 rm --
+
+# running a process 
+sudo service postgresql start
